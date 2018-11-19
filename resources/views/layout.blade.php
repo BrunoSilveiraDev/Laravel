@@ -7,7 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <title>@yield('title', 'Laravel')</title>
   </head>
   <body>
@@ -25,18 +25,22 @@
                 @endauth
             </div>
         @endif -->
-        <ul class="nav justify-content-center">
-          <li class="nav-item">
-            <a class="nav-link active" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/contato">Contato</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/sobre">Sobre</a>
-          </li>
-        </ul>
-
+        <div class="container rounded">
+          <ul class="nav justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link active" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contato">Contato</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/sobre">Sobre</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/comidas">Comidas</a>
+            </li>
+          </ul>
+        </div>
 
     @yield('conteudo')
 

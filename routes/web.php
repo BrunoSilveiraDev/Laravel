@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', 'PaginasController@home');
+ Route::get('/', 'PaginasController@home');
 Route::get('/contato', 'PaginasController@contato');
 Route::get('/sobre', 'PaginasController@sobre');
+Route::get('/comida', 'PaginasController@comida');
 
 
 

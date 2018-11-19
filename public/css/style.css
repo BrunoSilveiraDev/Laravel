@@ -6,3 +6,8 @@ body {
   background-color: white;
   padding-bottom: 2px;
 }
+
+.navegador {
+  width: 50%;
+  height: 40%;
+}

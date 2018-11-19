@@ -1,4 +1,4 @@
-@extends('comidas.layout')
+@extends('layout')
 
 
 @section('conteudo')
