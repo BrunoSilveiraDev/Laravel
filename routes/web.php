@@ -19,5 +19,4 @@ Route::get('/comida', 'PaginasController@comida');
 
 
 Route::resource('comidas','ComidaController');
-Route::resource('comidas/cadastra','ComidaController');
-Route::resource('comidas/edita','ComidaController');
+
