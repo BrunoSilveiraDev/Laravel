@@ -25,7 +25,7 @@
                 <tr>
                     <td>{{$order->id}}</td>
                     <td>{{$order->formatted_status}}</td>
-                    <td>{{$order->paid}}</td>
+                    <td>{{$order->status_paid}}</td>
                     <td>{{$order->track_code}}</td>
                 </tr>
             @endforeach

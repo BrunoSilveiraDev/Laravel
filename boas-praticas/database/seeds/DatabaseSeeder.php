@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+use App\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,7 +13,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        //cria um usuário para que não tenhamos que criar manualmente toda vez que fizermos um migrate:refresh --seed
+        User::create([
+            'name' => 'Bruno Silveira',
+            'email' => 'brunosilvcarv@gmail.com',
+            'password' => Hash::make(123)
+        ]);
         $this->call(OrdersTableSeeder::class);
     }
 }
