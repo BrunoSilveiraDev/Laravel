@@ -26,6 +26,11 @@ class Order extends Model
         return $query->where('paid', true);
     }
 
+    public function scopeStatus($query, $status)
+    {
+        return $query->where('status', $status);
+    }
+
     //acessors
     public function getFormattedStatusAttribute()
     {

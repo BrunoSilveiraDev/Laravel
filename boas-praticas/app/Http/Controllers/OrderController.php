@@ -13,10 +13,8 @@ class OrderController extends Controller
         //$orders = Order::all();
         // pegando dos scopes, verificando qual é o scope pelo request
         $orders = Order::where(function($query){
-            if(request()->get('status') == 'pending')
-                $query->pending();
-            if(request()->get('status') == 'delivered')
-                $query->delivered();
+            if(!empty(request()->get('status')))
+                $query->status(request()->get('status'));
             if(request()->get('paid') == 1)
                 $query->paid();
         })->get();
