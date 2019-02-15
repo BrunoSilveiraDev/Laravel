@@ -3,9 +3,19 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Order extends Model
 {
+    //sobrescrevendo o método boot
+    //para ser mostrado na tela somente os pedidos que não foram cancelados
+    protected static function boot()
+    {
+        parent::boot();
+        static::addGlobalScope('status', function(Builder $builder){//pode ser tanto classe como closure/função
+            $builder->where('status', '<>', 'cancel');
+        });
+    }
     //scopes
     /**
      * @param Builder $query
@@ -34,7 +44,20 @@ class Order extends Model
     //acessors
     public function getFormattedStatusAttribute()
     {
-        return $this->status == 'pending' ? 'Envio Pendente' : 'Produto Enviado';
+        switch($this->status)
+        {
+            case 'pending':
+                return 'Envio Pendente';
+            break;
+
+            case 'delivered':
+                return 'Produto Enviado';
+            break;
+
+            case 'cancel':
+                return 'Pedido Cancelado';
+            break;
+        }
     }
 
     public function getStatusPaidAttribute()
