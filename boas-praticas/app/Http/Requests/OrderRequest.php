@@ -11,6 +11,7 @@ class OrderRequest extends FormRequest
      *
      * @return bool
      */
+    // é preciso setar para true para poder funcionar
     public function authorize()
     {
         return true;
