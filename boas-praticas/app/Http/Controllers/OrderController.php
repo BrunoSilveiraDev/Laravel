@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\OrderRequest;
 use App\Models\Order;
 
 class OrderController extends Controller
@@ -40,6 +40,19 @@ class OrderController extends Controller
         //     $orders = $orders->where('paid', 1);
         // }
 
-        return view('dashboard.orders', compact('orders'));
+        return view('dashboard.orders.index', compact('orders'));
+    }
+
+    public function create()
+    {
+        return view('dashboard.orders.create');
+    }
+
+    public function store(OrderRequest $request)
+    {
+        // dd($request->all());
+
+        $order = Order::create($request->all());
+        dd($order);
     }
 }

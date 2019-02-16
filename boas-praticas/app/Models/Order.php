@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Builder;
 
 class Order extends Model
 {
+    protected $fillable = [
+        'status',
+        'track_code'
+    ];
     //sobrescrevendo o método boot
     //para ser mostrado na tela somente os pedidos que não foram cancelados
     protected static function boot()

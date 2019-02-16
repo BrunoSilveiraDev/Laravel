@@ -10,6 +10,8 @@
     <a class="btn btn-light" href="{{ route('orders.index') }}">Limpar Filtro</a>
 
     <hr>
+    <a class="btn btn-primary" href="{{ route('orders.create') }}">Nova Order</a>
+    <hr>
 
     <table class="table table-bordered">
         <thead class="thead-light">
