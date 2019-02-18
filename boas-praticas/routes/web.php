@@ -19,6 +19,17 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/collections', function(){
+    $fruits = collect([
+        'apple', 'pear', 'banana', 'strawberry'
+    ]);
+    $fruits = $fruits->reject(function($fruit){
+        return $fruit == 'strawberry';
+    });
+
+    dd($fruits);
+});
+
 Route::group(['middleware' => 'auth', 'prefix' => 'orders'], function() {
     Route::get('/', 'OrderController@index')
             ->name('orders.index');
