@@ -28,7 +28,7 @@ class SendCreatedUserEmail implements ShouldQueue
     /**
      * Execute the job.
      *
-     * @return void
+     * @return void ...
      */
     public function handle()
     {
