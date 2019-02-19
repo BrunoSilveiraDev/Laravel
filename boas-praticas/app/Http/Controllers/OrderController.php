@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\OrderRequest;
 use App\Models\Order;
+use App\Repositories\OrderRepositoryEloquent;
+use App\Repositories\OrderRepository;
 
 class OrderController extends Controller
 {
@@ -54,5 +56,12 @@ class OrderController extends Controller
 
         $order = Order::create($request->all());
         dd($order);
+    }
+
+    public function all(OrderRepository $repository)
+    {
+        //  ao invés de usar direto o Eloquent, uso o respository
+        // return Order::all();
+        return $repository->listAll();
     }
 }

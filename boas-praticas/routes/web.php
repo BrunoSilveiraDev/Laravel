@@ -37,4 +37,5 @@ Route::group(['middleware' => 'auth', 'prefix' => 'orders'], function() {
             ->name('orders.create');
     Route::post('/create', 'OrderController@store')
             ->name('orders.store');
+    Route::get('/all', 'OrderController@all');
 });

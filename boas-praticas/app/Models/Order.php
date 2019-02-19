@@ -3,75 +3,23 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
+use Prettus\Repository\Contracts\Transformable;
+use Prettus\Repository\Traits\TransformableTrait;
 
-class Order extends Model
+/**
+ * Class Order.
+ *
+ * @package namespace App\Models;
+ */
+class Order extends Model implements Transformable
 {
-    protected $fillable = [
-        'status',
-        'track_code'
-    ];
-    //sobrescrevendo o método boot
-    //para ser mostrado na tela somente os pedidos que não foram cancelados
-    protected static function boot()
-    {
-        parent::boot();
-        static::addGlobalScope('status', function(Builder $builder){//pode ser tanto classe como closure/função
-            $builder->where('status', '<>', 'cancel');
-        });
-    }
-    //scopes
+    use TransformableTrait;
+
     /**
-     * @param Builder $query
-     * return Builder
+     * The attributes that are mass assignable.
+     *
+     * @var array
      */
-    public function scopePending($query)
-    {
-        return $query->where('status', 'pending');
-    }
+    protected $fillable = [];
 
-    public function scopeDelivered($query)
-    {
-        return $query->where('status', 'delivered');
-    }
-
-    public function scopePaid($query)
-    {
-        return $query->where('paid', true);
-    }
-
-    public function scopeStatus($query, $status)
-    {
-        return $query->where('status', $status);
-    }
-
-    //acessors
-    public function getFormattedStatusAttribute()
-    {
-        switch($this->status)
-        {
-            case 'pending':
-                return 'Envio Pendente';
-            break;
-
-            case 'delivered':
-                return 'Produto Enviado';
-            break;
-
-            case 'cancel':
-                return 'Pedido Cancelado';
-            break;
-        }
-    }
-
-    public function getStatusPaidAttribute()
-    {
-        return $this->paid ? 'Pago' : 'Aguardando Pagamento';
-    }
-
-    //mutators
-    public function setTrackCodeAttribute($value)
-    {
-        $this->attributes['track_code'] = "COD_{$value}";
-    }
 }
