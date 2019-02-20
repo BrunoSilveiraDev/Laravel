@@ -21,3 +21,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/form', 'FormController@index')->name('form');
 Route::post('/form', 'FormController@store')->name('form');
+Route::get('/search/{searchKey}', 'FormController@search');
+
